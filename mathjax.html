@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MathJax Editor</title>
+<style type="text/css">
+html, body { width: 100%; height: 100%; margin: 0; padding: 0 }
+.container{ width: 100%; height: 100%; margin: 0; padding: 0 }
+.textarea { float: left; width: 50%; height: 100% }
+.preview { float: left; width: 50%; height: 100%; box-sizing: border-box; padding: 10px;  }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="editor">
+        <textarea id="editor" class="textarea">\sum_{k=0}^{10} k</textarea>
+    </div>
+    <div id="preview" class="preview">$$\sum_{k=0}^{10} k$$</div>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax.typeset();
+
+var textarea = document.getElementById("editor");
+var preview = document.getElementById("preview");
+textarea.onkeyup = function() {
+    preview.innerText = textarea.value;
+    MathJax.typeset();
+};
+</script>
+</body>
+</html>
